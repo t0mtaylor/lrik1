@@ -1,11 +1,18 @@
 {
-  "name": "app",
-  "version": "0.1.0",
+  "name": "lrik1",
+  "version": "0.1.1",
   "private": true,
+  "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "jest-junit": "^5.2.0",
+    "react-scripts": "2.0.3",
+    "react-test-render": "^1.1.1"
+  },
   "dependencies": {
     "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-scripts": "2.0.3"
+    "react-dom": "^16.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,9 +29,32 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0",
-    "react-test-render": "^1.1.1"
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 86,
+        "functions": 89,
+        "lines": 92,
+        "statements": 92
+      }
+    },
+    "coverageReporters": [
+      "json",
+      "text",
+      "html",
+      "lcov",
+      "clover",
+      "cobertura"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "App UI Jest Tests",
+    "output": "./test-reports/jest/junit.xml",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "usePathForSuiteName": "true"
   }
 }
