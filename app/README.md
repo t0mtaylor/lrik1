@@ -41,10 +41,13 @@ Your app is ready to be deployed!
 See the section about [deployment](#deployment) for more information.
 
 
-
-
-
-*below is standard Create React App blurb*
+- &nbsp;
+- &nbsp;
+- &nbsp;
+> below is standard Create React App blurb, enjoy!
+- &nbsp;
+- &nbsp;
+- &nbsp;
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
