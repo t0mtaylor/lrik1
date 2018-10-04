@@ -3,10 +3,27 @@
   "version": "0.1.1",
   "private": true,
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
+    "eslint": "^5.6.1",
+    "eslint-config-google": "^0.10.0",
+    "eslint-config-react-app": "^3.0.3",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "jest-junit": "^5.2.0",
+    "prop-types": "^15.6.2",
+    "raf": "^3.4.0",
     "react-scripts": "2.0.3",
     "react-test-render": "^1.1.1"
   },
@@ -17,7 +34,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --setupFiles=./support/test-support.js --testPathPattern .*.test.js$",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage --no-cache --no-watch",
+    "test:all": "yarn lint && yarn test:coverage",
+    "lint": "eslint . --ext .js,.jsx --fix",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,6 +51,7 @@
     "not op_mini all"
   ],
   "jest": {
+    "coverageDirectory": "<rootDir>/test-reports/coverage",
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ],
@@ -48,7 +70,36 @@
       "lcov",
       "clover",
       "cobertura"
-    ]
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/index.js",
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts|helpers)[/\\\\]"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "<rootDir>/__tests__/helpers/styleMock.js"
+    },
+    "rootDir": ".",
+    "roots": [
+      "__tests__"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "es6",
+      "jsx"
+    ],
+    "unmockedModulePathPatterns": [
+      "../node_modules/react"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/support/jest/css-import-transform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/support/jest/file-transform.js"
+    }
   },
   "jest-junit": {
     "suiteName": "App UI Jest Tests",
