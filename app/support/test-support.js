@@ -30,3 +30,7 @@ global.shallow = shallow;
 global.render = render;
 global.mount = mount;
 
+
+//setupJest.js or similar file
+global.fetch = require('jest-fetch-mock')
+
